@@ -16,14 +16,21 @@ def main():
                         help='The AWS region to simulate when creating DynamoDB local tables')
     parser.add_argument('--endpoint-url', dest='endpoint', metavar='<url>', default='http://localhost:8000',
                         help='The DynamoDB local endpoint url')
+    parser.add_argument('--parameters', dest='parameters', default="")
 
     args = parser.parse_args()
+
+    user_parameters = {}
+    for i in args.parameters.split(' '):
+        key, value = i.split('=')
+        user_parameters[key] = value
+
 
     try:
         cloudFormationParser = CloudFormationParser()
 
         # iterate through tables in dependency order
-        for table in cloudFormationParser.parse_cloud_formation_template(args.filename):
+        for table in cloudFormationParser.parse_cloud_formation_template(args.filename, user_parameters):
             print table.toCLI(args.region, args.endpoint)
 
     except IOError:

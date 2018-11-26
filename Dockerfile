@@ -7,4 +7,4 @@ COPY . .
 
 RUN pip install -r requirements.txt
 
-#ENTRYPOINT python ./parse.py
+ENTRYPOINT python ./parse.py

@@ -42,7 +42,6 @@ class CloudFormationParser:
                         else:
                             CloudFormationParser.replace_ref(i, parameters)
 
-
     def parse_cloud_formation_template(self, file_name, users_parameters=None):
         try:
             cloud_formation_json = self.load_yaml(file_name)

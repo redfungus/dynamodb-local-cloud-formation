@@ -32,13 +32,13 @@ def main():
 
         # iterate through tables in dependency order
         for table in cloudFormationParser.parse_cloud_formation_template(args.filename, user_parameters):
-            print table.toCLI(args.region, args.endpoint)
+            print(table.toCLI(args.region, args.endpoint))
 
     except IOError:
-        print "Unable to open cloud formation template: " + args.filename
+        print("Unable to open cloud formation template: " + args.filename)
         sys.exit(-2)
     except ValueError:
-        print "Unable to parse open cloud formation template: " + args.filename
+        print("Unable to parse open cloud formation template: " + args.filename)
         sys.exit(-3)
 
     sys.exit(0)

@@ -1,4 +1,5 @@
-FROM python:2.7.15-alpine3.7
+ARG PYTHON_VERSION=base_image
+FROM python:${PYTHON_VERSION}-alpine3.7
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app

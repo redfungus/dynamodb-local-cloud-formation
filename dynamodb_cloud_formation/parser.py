@@ -21,9 +21,10 @@ def main():
     args = parser.parse_args()
 
     user_parameters = {}
-    for i in args.parameters.split(' '):
-        key, value = i.split('=')
-        user_parameters[key] = value
+    if args.parameters:
+        for i in args.parameters.split(' '):
+            key, value = i.split('=')
+            user_parameters[key] = value
 
 
     try:

@@ -43,10 +43,16 @@ class CloudFormationParser:
                             CloudFormationParser.replace_ref(i, parameters)
 
     def parse_cloud_formation_template(self, file_name, users_parameters=None):
-        try:
-            cloud_formation_json = self.load_yaml(file_name)
-        except yaml.scanner.ScannerError:
-            cloud_formation_json = self.load_json(file_name)
+        if "Resources" in file_name:
+            try:
+                cloud_formation_json = yaml.load(file_name)
+            except yaml.scanner.ScannerError:
+                cloud_formation_json = json.loads(file_name)
+        else:
+            try:
+                cloud_formation_json = self.load_yaml(file_name)
+            except yaml.scanner.ScannerError:
+                cloud_formation_json = self.load_json(file_name)
 
         resources = cloud_formation_json['Resources']
         cloud_formation_parameters = cloud_formation_json.get('Parameters', {})

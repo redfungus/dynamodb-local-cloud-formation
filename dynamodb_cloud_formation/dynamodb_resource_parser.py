@@ -74,6 +74,15 @@ class DynamoDbResourceParser:
 		else:
 			return ""
 
+	def streamSpecification(self):
+		if 'StreamSpecification' in self.json['Properties']:
+			streamSpecification = self.json['Properties']['StreamSpecification']
+
+			return " --stream-specification '" + json.JSONEncoder(sort_keys=True).encode(streamSpecification) + "'"
+		else: 
+			return ""
+
+
 	def toCLI(self, region, endpoint_url):
 		return 	''.join(('aws dynamodb create-table --region ',
 				region,
@@ -85,6 +94,5 @@ class DynamoDbResourceParser:
 				self.localSecondaryIndexes(), 
 				self.globalSecondaryIndexes(), 
 				self.provisionedThroughput(), 
+				self.streamSpecification(),
 				"\n"))
-
-

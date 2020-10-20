@@ -62,11 +62,15 @@
           "AttributeName" : "Sales",
           "KeyType" : "RANGE"
         }
-      ],                           
+      ],
       "Projection" : {
         "NonKeyAttributes" : ["Artist"],
         "ProjectionType" : "INCLUDE"
       }
-    }]
+    }],
+    "StreamSpecification" : {
+      "StreamEnabled": true,
+      "StreamViewType": "NEW_AND_OLD_IMAGES"
+    }
   }
 }

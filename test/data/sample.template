@@ -70,7 +70,11 @@
             "NonKeyAttributes" : ["Artist"],
             "ProjectionType" : "INCLUDE"
           }
-        }]
+        }],
+        "StreamSpecification" : {
+          "StreamEnabled": true,
+          "StreamViewType": "NEW_AND_OLD_IMAGES"
+        }
       }
     },
 	"mySecondDDBTable" : {

@@ -50,5 +50,5 @@ Resources:
           - Artist
           ProjectionType: INCLUDE
       StreamSpecification:
-        - StreamEnabled: true
-        - StreamViewType: NEW_AND_OLD_IMAGES
+        StreamEnabled: true
+        StreamViewType: NEW_AND_OLD_IMAGES
